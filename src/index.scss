@@ -1,0 +1,175 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Mono:wght@700&display=swap");
+
+// ## Colors
+// ### Primary
+$strong-cyan: hsl(172, 67%, 45%);
+
+// ### Neutral
+$very-dark-cyan: hsl(183, 100%, 15%);
+$dark-grayish-cyan: hsl(186, 14%, 43%);
+$grayish-cyan: hsl(184, 14%, 56%);
+$light-grayish-cyan: hsl(185, 41%, 84%);
+$very-light-grayish-cyan: hsl(189, 41%, 97%);
+$white: hsl(0, 0%, 100%);
+
+// ## Typography
+// (form inputs)
+$size: 24px;
+
+// ### Font
+// [Space Mono](https://fonts.google.com/specimen/Space+Mono)
+// - Weights: 700
+
+$font-space-mono: "Space Mono", monospace;
+
+* {
+  box-sizing: border-box;
+  font-family: $font-space-mono;
+}
+
+p {
+  margin: 0;
+}
+
+button {
+  background: none;
+  border: none;
+  outline: none;
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+}
+input {
+  border: none;
+  text-align: right;
+  background: $very-light-grayish-cyan;
+  width: 100%;
+  border-radius: 5px;
+  outline: none;
+  padding: 0.25rem 1rem;
+  font-size: $size;
+  color: $very-dark-cyan;
+  &::placeholder {
+    color: $grayish-cyan;
+    font-size: $size;
+    margin-bottom: 2px;
+  }
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: grid;
+  align-items: center;
+  background: $light-grayish-cyan;
+  header {
+    text-align: center;
+  }
+}
+
+.tip-container {
+  margin: 0 auto;
+  max-width: 950px;
+  display: flex;
+  flex-direction: row;
+  background: $white;
+  padding: 2rem;
+  border-radius: 1.5rem;
+  gap: 3rem;
+}
+
+.tip-select-container {
+  flex: 1;
+  padding: 1rem;
+  padding-right: 0;
+  .bill-container {
+    margin-bottom: 3rem;
+  }
+  label {
+    color: $dark-grayish-cyan;
+  }
+  .input-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-top: 0.5rem;
+  }
+  svg {
+    position: absolute;
+    left: 1rem;
+  }
+  .buttons-tip {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 0.875rem;
+    margin-top: 1rem;
+    margin-bottom: 2.5rem;    
+    .percentage-tip {
+      background: $very-dark-cyan;
+      border-radius: 5px;
+      color: $white;
+      font-size: $size;
+
+      &:hover, &:focus {
+        opacity: 0.7;
+      }
+      
+    }
+    .custom-tip::placeholder {
+      color: $dark-grayish-cyan;
+    }
+    .active {
+      background: $strong-cyan;
+    }
+  }
+}
+
+.tip-amount-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  background: $very-dark-cyan;
+  border-radius: 0.65rem;
+  padding: 2.5rem;
+  
+  .tip-amount_1, .tip-total_1 {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    .tip-amount_2, .tip-total_2 {
+      color: $white;
+
+      span {
+        color: $grayish-cyan;
+        font-size: 13px;
+      } 
+    }
+    .tip-amount_3, .tip-total_3 {
+      color: $strong-cyan;
+      font-size: 3rem;
+    }
+  }
+  .reset {
+    margin-top: auto;
+    background: $strong-cyan;
+    color: $very-dark-cyan;
+    border-radius: 0.25rem;
+    padding: 0.5rem;
+    font-size: 1.15rem;
+    text-transform: uppercase;
+    opacity: 0.2;
+  }
+}
+
+.attribution {
+  margin-top: 1rem;
+  font-size: 12px;
+  text-align: center;
+}
+.attribution a {
+  color: hsl(228, 45%, 44%);
+}
