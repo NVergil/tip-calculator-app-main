@@ -9,6 +9,7 @@ export const useHandleTips = () => {
   const [tipAmount, setTipAmount] = useState(null);
   const [tipTotalPerPerson, setTipTotalPerPerson] = useState(null);
 
+
   const handleBill = (e) => {
     restrictToNumbers(e);
     if (parseInt(e.target.value) <= 0) {
@@ -59,16 +60,23 @@ export const useHandleTips = () => {
     }
   }, [activeButton, custom, bill, numPeople]);
 
+  const resetStates = () => {
+    window.location.reload();
+  };
+
   return {
     active,
     activeButton,
     custom,
+    bill,
+    numPeople,
     handleSelectTip,
     handleCustomTip,
     handleBill,
     handleNumPeople,
     tipAmount,
     tipTotalPerPerson,
+    resetStates,
   };
 };
 

@@ -163,6 +163,9 @@ body {
     text-transform: uppercase;
     opacity: 0.2;
   }
+  .reset.active {
+    opacity: 1;
+  }
 }
 
 .attribution {

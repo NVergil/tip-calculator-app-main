@@ -1,5 +1,13 @@
 /* eslint-disable react/prop-types */
-const TipAmount = ({ tipAmount, tipTotalPerPerson }) => {
+const TipAmount = ({
+  tipAmount,
+  tipTotalPerPerson,
+  resetStates,
+  activeButton,
+  custom,
+  bill,
+  numPeople,
+}) => {
   return (
     <section className="tip-amount-container">
       <div className="tip-amount_1">
@@ -20,9 +28,20 @@ const TipAmount = ({ tipAmount, tipTotalPerPerson }) => {
             <span> / person</span>
           </p>
         </div>
-        <p className="tip-total_3">{tipTotalPerPerson ? `$${tipTotalPerPerson}` : "$0.00"}</p>
+        <p className="tip-total_3">
+          {tipTotalPerPerson ? `$${tipTotalPerPerson}` : "$0.00"}
+        </p>
       </div>
-      <button className="reset">reset</button>
+      <button
+        className={`reset ${
+          bill && (activeButton || custom) && numPeople
+            ? "active"
+            : ""
+        }`}
+        onClick={resetStates}
+      >
+        reset
+      </button>
     </section>
   );
 };

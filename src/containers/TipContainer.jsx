@@ -7,12 +7,16 @@ const TipContainer = () => {
   const {
     active,
     activeButton,
+    custom,
+    bill,
+    numPeople,
     handleSelectTip,
     handleCustomTip,
     handleBill,
     handleNumPeople,
     tipAmount,
-    tipTotalPerPerson
+    tipTotalPerPerson,
+    resetStates,
   } = useHandleTips();
 
   return (
@@ -26,7 +30,15 @@ const TipContainer = () => {
         restrictToNumbers={restrictToNumbers}
         handleNumPeople={handleNumPeople}
       />
-      <TipAmount tipAmount={tipAmount} tipTotalPerPerson={tipTotalPerPerson} />
+      <TipAmount
+        activeButton={activeButton}
+        custom={custom}
+        bill={bill}
+        numPeople={numPeople}
+        tipAmount={tipAmount}
+        tipTotalPerPerson={tipTotalPerPerson}
+        resetStates={resetStates}
+      />
     </section>
   );
 };
