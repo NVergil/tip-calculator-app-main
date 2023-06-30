@@ -10,16 +10,22 @@ const TipSelect = ({
   handleBill,
   restrictToNumbers,
   handleNumPeople,
+  billError,
+  customError,
+  numPeopleError,
 }) => {
   return (
     <section className="tip-select-container">
       <div className="bill-container">
         <label htmlFor="bill">Bill</label>
+        {billError && (
+        <label htmlFor="bill" className={billError ? "labelMessageError" : ""}>{billError}</label>
+        )}
         <div className="input-container">
           <input
             id="bill"
             type="text"
-            className="bill_1"
+            className={`bill_1 ${billError ? "inputError" : ""}`}
             placeholder="0"
             onInput={handleBill}
           />
@@ -29,12 +35,15 @@ const TipSelect = ({
       <label htmlFor="custom-tip" className="select-tip">
         Select Tip %
       </label>
+      {customError && (
+        <label htmlFor="custom-tip" className={customError ? "labelMessageError" : ""}>{customError}</label>
+        )}
       <div className="buttons-tip" onClick={handleSelectTip}>
         <button
           className={`percentage-tip ${
-            activeButton === "5" && active ? "active" : ""
+            activeButton === "05" && active ? "active" : ""
           }`}
-          value="5"
+          value="05"
         >
           5%
         </button>
@@ -73,7 +82,7 @@ const TipSelect = ({
         <input
           id="custom-tip"
           type="text"
-          className="custom-tip"
+          className={`custom-tip ${customError ? "inputError" : ""}`}
           placeholder="Custom"
           onInput={(e) => {
             restrictToNumbers(e);
@@ -85,11 +94,14 @@ const TipSelect = ({
         <label htmlFor="num-people" className="num-people">
           Number of People
         </label>
+        {numPeopleError && (
+        <label htmlFor="num-people" className={numPeopleError ? "labelMessageError" : ""}>{numPeopleError}</label>
+        )}
         <div className="input-container">
           <input
             id="num-people"
             type="text"
-            className="num-people_1"
+            className={`num-people_1 ${numPeopleError ? "inputError" : ""}`}
             placeholder="0"
             onInput={handleNumPeople}
           />

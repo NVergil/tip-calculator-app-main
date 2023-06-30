@@ -1,4 +1,7 @@
-import { restrictToNumbers, useHandleTips } from "../utils";
+import {
+  restrictToNumbers,
+  useHandleTips,
+} from "../utils";
 
 import TipSelect from "../components/TipSelect";
 import TipAmount from "../components/TipAmount";
@@ -17,6 +20,9 @@ const TipContainer = () => {
     tipAmount,
     tipTotalPerPerson,
     resetStates,
+    billError,
+    customError,
+    numPeopleError,
   } = useHandleTips();
 
   return (
@@ -29,6 +35,9 @@ const TipContainer = () => {
         handleBill={handleBill}
         restrictToNumbers={restrictToNumbers}
         handleNumPeople={handleNumPeople}
+        billError={billError}
+        customError={customError}
+        numPeopleError={numPeopleError}
       />
       <TipAmount
         activeButton={activeButton}

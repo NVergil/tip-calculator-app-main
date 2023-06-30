@@ -3,6 +3,8 @@
 // ## Colors
 // ### Primary
 $strong-cyan: hsl(172, 67%, 45%);
+$strong-cyan-200: hsl(171, 62%, 75%);
+$error: rgb(233, 106, 94);
 
 // ### Neutral
 $very-dark-cyan: hsl(183, 100%, 15%);
@@ -54,6 +56,9 @@ input {
     font-size: $size;
     margin-bottom: 2px;
   }
+  &:focus {
+    outline: 2px solid $strong-cyan;
+  }
 }
 
 body {
@@ -66,10 +71,13 @@ body {
     text-align: center;
   }
 }
+header {
+  margin-bottom: 5rem;
+}
 
 .tip-container {
   margin: 0 auto;
-  max-width: 950px;
+  max-width: 920px;
   display: flex;
   flex-direction: row;
   background: $white;
@@ -111,22 +119,36 @@ body {
       color: $white;
       font-size: $size;
 
-      &:hover, &:focus {
-        opacity: 0.7;
+      &:hover {
+        background: $strong-cyan-200;
+        color: $very-dark-cyan;
       }
       
     }
+    .custom-tip {
+      padding-inline: 0.9rem;
+    }
     .custom-tip::placeholder {
       color: $dark-grayish-cyan;
+      text-align: center;
     }
     .active {
       background: $strong-cyan;
+      color: $very-dark-cyan;
     }
+  }
+  .labelMessageError {
+    color: $error;
+    float: right;
+  }
+  .inputError {
+    outline: 2px solid $error;
   }
 }
 
 .tip-amount-container {
   flex: 1;
+  max-width: 413px;
   display: flex;
   flex-direction: column;
   gap: 2rem;
@@ -175,4 +197,50 @@ body {
 }
 .attribution a {
   color: hsl(228, 45%, 44%);
+}
+
+
+@media screen and (max-width: 925px) {
+  header {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+  }
+  .tip-container {
+    flex-direction: column;
+    padding: 1.5rem;
+    gap: 2rem;
+    .tip-select-container {
+      padding: 0.5rem;
+    }
+    .tip-amount-container {
+      max-width: 100%;
+    }
+  }
+}
+@media screen and (max-width: 500px) {
+ .tip-select-container {
+  .bill-container {
+    margin-bottom: 2rem;
+  }
+  .buttons-tip {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    margin-bottom: 2rem;
+    .percentage-tip {
+      padding-block: 0.30rem;
+    }
+  }
+ } 
+ .tip-amount-container {
+  padding: 1.5rem;
+
+  .tip-amount_1, .tip-total_1 {
+    
+    .tip-amount_3, .tip-total_3 {
+      font-size: 2rem;
+    }
+    
+  }
+
+ }
 }

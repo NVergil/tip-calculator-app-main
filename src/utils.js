@@ -8,13 +8,18 @@ export const useHandleTips = () => {
   const [numPeople, setNumPeople] = useState(null);
   const [tipAmount, setTipAmount] = useState(null);
   const [tipTotalPerPerson, setTipTotalPerPerson] = useState(null);
+  const [billError, setBillError] = useState("");
+  const [customError, setCustomError] = useState("");
+  const [numPeopleError, setNumPeopleError] = useState("");
+  
 
 
   const handleBill = (e) => {
-    restrictToNumbers(e);
+    restrictToFloatNumbers(e);
     if (parseInt(e.target.value) <= 0) {
-      console.log("Can't be 0");
+      setBillError("Can't be 0");
     } else {
+      setBillError("");
       setBill(e.target.value);
     }
   };
@@ -23,6 +28,8 @@ export const useHandleTips = () => {
     if (e.target.matches(".percentage-tip")) {
       setActive(true);
       setActiveButton(e.target.value);
+      setCustomError("");
+      document.querySelector(".custom-tip").value = "";
     }
     if (e.target.matches(".custom-tip")) {
       setActiveButton(null);
@@ -31,16 +38,19 @@ export const useHandleTips = () => {
 
   const handleCustomTip = (e) => {
     if (parseInt(e.target.value) <= 0) {
-      console.log("Can't be 0");
+      setCustomError("Can't be 0");
+    } else {
+      setCustomError("");
+      setCustom(e.target.value);
     }
-    setCustom(e.target.value);
   };
 
   const handleNumPeople = (e) => {
     restrictToNumbers(e);
     if (parseInt(e.target.value) <= 0) {
-      console.log("Can't be 0");
+      setNumPeopleError("Can't be 0");
     } else {
+      setNumPeopleError("");
       setNumPeople(e.target.value);
     }
   };
@@ -61,7 +71,9 @@ export const useHandleTips = () => {
   }, [activeButton, custom, bill, numPeople]);
 
   const resetStates = () => {
-    window.location.reload();
+    if ((activeButton || custom) && bill && numPeople){
+      window.location.reload();
+    }
   };
 
   return {
@@ -77,10 +89,13 @@ export const useHandleTips = () => {
     tipAmount,
     tipTotalPerPerson,
     resetStates,
+    billError,
+    customError,
+    numPeopleError,
   };
 };
 
-export const restrictToNumbers = (event) => {
+export const restrictToFloatNumbers = (event) => {
   const input = event.target;
   let inputValue = input.value;
 
@@ -96,4 +111,14 @@ export const restrictToNumbers = (event) => {
 
   // Actualizar el valor del campo de entrada
   input.value = inputValue;
+};
+export const restrictToNumbers = (event) => {
+  const input = event.target;
+  const inputValue = input.value;
+
+  // Eliminar cualquier carácter que no sea un número
+  const cleanedValue = inputValue.replace(/\D/g, "");
+
+  // Actualizar el valor del campo de entrada
+  input.value = cleanedValue;
 };

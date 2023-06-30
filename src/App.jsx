@@ -4,13 +4,13 @@ import TipContainer from "./containers/TipContainer";
 
 const App = () => {
   return (
-    <div>
+    <main>
       <header>
         <Logo />
       </header>
       <TipContainer />
       <Footer />
-    </div>
+    </main>
   );
 };
 
